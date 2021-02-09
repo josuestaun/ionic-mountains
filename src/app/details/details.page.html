@@ -1,9 +1,42 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>details</ion-title>
+    <ion-buttons slot="end">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-button [routerLink]="['/home']" routerDirection="back" color="medium">
+      <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
+    </ion-button>
+    <ion-title slot="secondary">Detalles de montaña</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-
+  <ion-card *ngIf="mountain">
+    <img src="{{mountain.imagen}}">
+    <ion-card-header>
+      {{mountain.nombre}}
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list>
+        <ion-item>
+          <ion-label>Altura: {{mountain.altura}}</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label>Desnivel: {{mountain.desnivel}}</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label>Tiempo subida: {{mountain.tiempo}}</ion-label>
+        </ion-item>
+        <ion-item>
+          {{mountain.descripcion}}
+        </ion-item>
+      </ion-list>
+      <ion-button shape="round" color="secondary" size="small" (click)="editRecord(mountain)">
+        <ion-icon size="small" slot="icon-only" name="create"></ion-icon>
+      </ion-button>
+      <ion-button shape="round" color="danger" size="small" (click)="removeRecord(mountain.id)">
+        <ion-icon size="small" slot="icon-only" name="trash"></ion-icon>
+      </ion-button>
+    </ion-card-content>
+  </ion-card>
 </ion-content>

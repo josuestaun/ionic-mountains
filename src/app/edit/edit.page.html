@@ -1,9 +1,71 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>edit</ion-title>
+    <ion-buttons slot="end">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-button [routerLink]="['/home']" routerDirection="back" color="medium">
+      <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
+    </ion-button>
+    <ion-title slot="secondary">Actualizar montaña</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-
+  <!--ngIf="bar"-->
+  <form [formGroup]="mountainForm" (ngSubmit)="onSubmit()" >
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <ion-label>Nombre:</ion-label>
+        </ion-col>
+        <ion-col>
+          <ion-input type="text" placeholder="Nombre montaña" formControlName="nombre"></ion-input>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-label>Descripcion:</ion-label>
+        </ion-col>
+        <ion-col>
+          <ion-input type="text" placeholder="Descripcion montaña" formControlName="descripcion"></ion-input>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-label>Altura:</ion-label>
+        </ion-col>
+        <ion-col>
+          <ion-input type="text" placeholder="Altura montaña" formControlName="altura"></ion-input>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-label>Desnivel:</ion-label>
+        </ion-col>
+        <ion-col>
+          <ion-input type="text" placeholder="Desnivel montaña" formControlName="desnivel"></ion-input>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-label>Tiempo subida:</ion-label>
+        </ion-col>
+        <ion-col>
+          <ion-textarea placeholder="Tiempo" formControlName="tiempo"></ion-textarea>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-label>Imagen</ion-label>
+        </ion-col>
+        <ion-col>
+          <ion-textarea placeholder="Imagen montaña" formControlName="imagen"></ion-textarea>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <ion-button type="submit" color="primary">
+      <ion-label>Actualizar</ion-label>
+      <ion-icon name="save"></ion-icon>
+    </ion-button>
+  </form>
 </ion-content>

@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="end">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title slot="primary">
+      Mountains
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <div class="ion-padding">
+    <ion-list>
+      <ion-item *ngFor="let mountain of mountains"
+      (click)="mountainTapped(mountain)">
+        <ion-thumbnail slot="start">
+          <img src="{{mountain.imagen}}">
+        </ion-thumbnail>
+        <ion-label> {{mountain.nombre}}</ion-label>
+      </ion-item>
+    </ion-list>
+  </div>
+</ion-content>
+
+<ion-toolbar>
+  <img width="50" height="50" src="/assets/images/mountain.png" />
+  <ion-title slot="primary">
+    Josué Martínez
+  </ion-title>
+</ion-toolbar>

@@ -1,25 +1,25 @@
 import { Injectable } from '@angular/core';
-import { IMovie } from '../share/interfaces';
+import { IMountain } from '../share/interfaces';
 import { Storage } from '@ionic/storage';
 @Injectable({
  providedIn: 'root'
 })
-export class MoviedbService {
- auxMovie: IMovie;
- auxMovieList: IMovie[] = [];
+export class MountaindbService {
+ auxMovie: IMountain;
+ auxMovieList: IMountain[] = [];
  constructor(private storage: Storage) { }
  // Stores a value
- setItem(reference: string, value: IMovie) {
- this.storage.set(reference, { id: value.id, name: value.name, genre:
-value.genre, date: value.date, cover: value.cover, description:
-value.description })
+ setItem(reference: string, value: IMountain) {
+ this.storage.set(reference, { id: value.id, nombre: value.nombre, descripcion:
+value.descripcion, altura: value.altura, desnivel: value.desnivel, tiempo:
+value.tiempo, imagen: value.imagen })
  .then(
  (data) => console.log('Stored first item!', data),
  error => console.error('Error storing item', error)
  );
  }
  // Gets a stored item
- getItem(reference):Promise<IMovie>{
+ getItem(reference):Promise<IMountain>{
  return this.storage.get(reference);
  }
  // check if it is empty
@@ -35,12 +35,12 @@ value.description })
  return this.storage.keys();
  }
  // Retrieving all values
- getAll():Promise<IMovie[]>{
+ getAll():Promise<IMountain[]>{
  return this.storage.keys().then( (k)=>
  {
  k.forEach(element => {
  this.getItem(element).then(
- (data:IMovie)=> this.auxMovieList.push(data)
+ (data:IMountain)=> this.auxMovieList.push(data)
  );
  });
  return this.auxMovieList;
@@ -62,4 +62,15 @@ value.description })
  error => console.error(error)
  );
  }
+
+ //update item
+ update(reference: string, value: IMountain) {
+    this.storage.set(reference, { id: value.id, nombre: value.nombre, descripcion:
+   value.descripcion, altura: value.altura, desnivel: value.desnivel, tiempo:
+   value.tiempo, imagen: value.imagen })
+    .then(
+    (data) => console.log('Stored first item!', data),
+    error => console.error('Error storing item', error)
+    );
+}
 }

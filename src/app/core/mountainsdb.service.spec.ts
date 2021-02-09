@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { MoviedbService } from './moviedb.service';
+import { MountaindbService } from './mountainsdb.service';
 
 describe('MoviedbService', () => {
-  let service: MoviedbService;
+  let service: MountaindbService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(MoviedbService);
+    service = TestBed.inject(MountaindbService);
   });
 
   it('should be created', () => {
