@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { MountaindbService } from '../core/mountainsdb.service';
+import {MountaincrudService} from '../core/mountaincrud.service';
 import { Router } from '@angular/router';
 import { ToastController } from '@ionic/angular';
 import { IMountain } from '../share/interfaces';
@@ -15,7 +16,7 @@ export class CreatePage implements OnInit {
   mountainForm: FormGroup;
   constructor(
     private router: Router,
-    private moviedbService: MountaindbService,
+    private mountaincrudService: MountaincrudService,
     public toastController: ToastController
   ) { }
   ngOnInit() {
@@ -56,7 +57,6 @@ export class CreatePage implements OnInit {
     this.mountain = this.mountainForm.value;
     let nextKey = this.mountain.nombre.trim();
     this.mountain.id = nextKey;
-    this.moviedbService.setItem(nextKey, this.mountain);
-    console.warn(this.mountainForm.value);
+    this.mountaincrudService.create_Mountain(this.mountain);
   }
 }

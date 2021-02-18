@@ -15,6 +15,11 @@ import { DetailsPageModule } from './details/details.module';
 import { EditPageModule } from './edit/edit.module';
 import { EditPage } from './edit/edit.page';
 
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireDatabaseModule } from '@angular/fire/database';
+import { environment } from '../environments/environment';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
@@ -28,6 +33,9 @@ import { EditPage } from './edit/edit.page';
     CreatePageModule,
     DetailsPageModule,
     EditPageModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFirestoreModule,
+    AngularFireDatabaseModule,
   ],
   providers: [
     //StatusBar,
